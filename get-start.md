@@ -3,28 +3,18 @@
 在项目中完成对象建模后，可以使用Obase来进行对象的管理（例如对象持久化），本篇教程将创建一个.NET Core控制台应用，来展示Obase的配置和对象的增删改查操作。本篇教程旨在指引简单入门.<br />
 <br />本篇教程将以此对象模型展开<br />![image.png](https://cdn.nlark.com/yuque/0/2020/png/291445/1580630239143-cfab9c29-f8a8-4def-b99c-a859d3bb9fed.png#align=left&display=inline&height=251&margin=%5Bobject%20Object%5D&name=image.png&originHeight=204&originWidth=400&size=15575&status=done&style=none&width=493)<br />
 
-<a name="coGkZ"></a>
-### 1. 从NuGet安装Obase
-
+#### 1. 从NuGet安装Obase
 - 在VS的NuGet包管理器中添加程序包源：[http://nuget.suiyiyun.cn:8081/nuget](http://nuget.suiyiyun.cn:8081/nuget)
 - 在NuGet包管理器中选择Obase进行安装
 
-
-<br />
-
-<a name="1eYCn"></a>
-### 2. 项目搭建
-
+#### 2. 项目搭建
 - 打开 Visual Studio
 - 单击“创建新项目”
 - 选择带有 C# 标记的“控制台应用 (.NET Core)” ，然后单击“下一步”
 - 输入“ObaseTutorial” 作为名称，然后单击“创建”
 - 添加对freep.Obase.dll的引用
 
-
-
-<a name="ENXfm"></a>
-### 3. 定义领域实体类
+#### 3. 定义领域实体类
 ```csharp
 	/// <summary>
     /// 文章
@@ -83,9 +73,7 @@
     }
 ```
 
-
-<a name="aodnK"></a>
-### 4. 自定义对象上下文
+#### 4. 自定义对象上下文
 Obase直接与应用程序进行交互的便是ObectContext（对象上下文），项目中可以根据具体情况定义一个或者多个继承于ObjectContext的自定义对象上下文。
 ```csharp
 	using freep.Obase;
@@ -107,8 +95,7 @@ Obase直接与应用程序进行交互的便是ObectContext（对象上下文）
 ```
 注意：自定义对象上下文通过继承父类的构造函数设置数据源连接字符串（此处为了演示方便，直接将连接字符串作为参数进行传递，实际项目中可以定义到配置文件中）。<br />
 
-<a name="aXFTv"></a>
-### 5. 配置对象模型
+#### 5. 配置对象模型
 在对象数据模型生成之前，可以对数据源的类型进行设置，以及对象数据模型的配置，配置的类型包括实体类型，关联类型，关联引用，关联端，属性等的配置，本篇只展示最基本的实体类型，关联类型，关联引用的配置。
 ```csharp
     /// <summary>
@@ -186,9 +173,7 @@ Obase直接与应用程序进行交互的便是ObectContext（对象上下文）
 	}
 ```
 
-
-<a name="SzKzD"></a>
-### 6. 定义对象集
+#### 6. 定义对象集
 最终对对象的操作和访问是通过对象上下文提供的对象集，此处我们定义文章和文章评论对象集：
 ```csharp
     /// <summary>
@@ -208,17 +193,12 @@ Obase直接与应用程序进行交互的便是ObectContext（对象上下文）
     }
 ```
 
-
-<a name="PesP4"></a>
-### 7. 对象的创建、读取、更新和删除
-<a name="b6igx"></a>
+#### 7. 对象的创建、读取、更新和删除
 ##### 实例化对象上下文
 ```csharp
 var myContext = new MyContext();
 ```
 
-
-<a name="5983u"></a>
 ##### 创建
 ```csharp
 //实例化对象
@@ -235,8 +215,6 @@ myContext.Blogs.Attach(blog);
 myContext.SaveChanges();
 ```
 
-
-<a name="0jarE"></a>
 ##### 读取
 ```csharp
 using System.Linq;
@@ -247,8 +225,6 @@ Blog firstBlog = myContext.Blogs.OrderBy(p => p.Url).First();
 List<Post> posts = firstBlog.Posts;
 ```
 
-
-<a name="LBsy3"></a>
 ##### 更新
 ```csharp
  //修改属性
@@ -257,8 +233,6 @@ firstBlog.Url = "http://www.test.com/aa.html";
 myContext.SaveChanges();
 ```
 
-
-<a name="zWNWi"></a>
 ##### 删除
 ```csharp
 //删除指定对象
