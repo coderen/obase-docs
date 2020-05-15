@@ -1,8 +1,12 @@
 - [Obase快速入门](get-start.md)
 - 数据对象模型
-  - [实体类型配置](entity_type_configuration.md)
-  - [关联型配置](entity_type_configuration.md)
-  - [关联引用配置]()
-  - 关联引用配置
-  - 对象的取值方式配置
-  - 对象的设置方式配置
+  - [实体类型配置](entity-type-configuration.md)
+  - [实体属性配置](entity-attribute-configuration.md)
+  - [关联型配置](association-type-configuration.md)
+  - [关联引用配置](association-reference-configuration.md)
+  - [自定义映射模块]()
+- 对象查询
+  - [查询]()
+- 事务处理
+- 并发冲突策略
+- 
